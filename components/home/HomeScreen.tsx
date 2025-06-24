@@ -12,7 +12,7 @@ export default function HomeScreen() {
       <View style={styles.buttonsContainer}>
         <Button
           text="Login"
-          onPress={() => router.navigate("/(tabs)")}
+          onPress={() => router.navigate("/login")}
           variant="primary"
         />
         <Pressable>
