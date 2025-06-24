@@ -18,7 +18,7 @@ export default function HomeScreen() {
         <Pressable>
           <Button
             text="Register"
-            onPress={() => router.navigate("/(tabs)/two")}
+            onPress={() => router.navigate("/register")}
             variant="secondary"
           />
         </Pressable>
