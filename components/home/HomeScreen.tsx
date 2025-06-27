@@ -14,12 +14,16 @@ export default function HomeScreen() {
           text="Login"
           onPress={() => router.navigate("/login")}
           variant="primary"
+          accessibilityLabel="goToLoginButton"
+          testId="goToLoginButton"
         />
         <Pressable>
           <Button
             text="Register"
             onPress={() => router.navigate("/register")}
             variant="secondary"
+            accessibilityLabel="goToRegisterButton"
+            testId="goToRegisterButton"
           />
         </Pressable>
       </View>
@@ -29,15 +33,16 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    backgroundColor: "#D99A25",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
+    color: "white",
   },
   buttonsContainer: {
     display: "flex",

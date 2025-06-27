@@ -16,6 +16,8 @@ interface InputFieldProps {
   toggleEye?: () => React.ReactNode;
   isPasswordHidden?: boolean;
   onKeyPress?: (e: any) => void;
+  accessibilityLabel: string;
+  testID: string;
 }
 
 function InputField({
@@ -28,7 +30,8 @@ function InputField({
   toggleEye,
   isPasswordHidden,
   errorMessage,
-  onKeyPress,
+  accessibilityLabel,
+  testID,
 }: InputFieldProps) {
   return (
     <View className="pb-[5px]">
@@ -57,6 +60,9 @@ function InputField({
             containerStyle={{
               paddingHorizontal: 0,
             }}
+            accessibilityLabel={accessibilityLabel}
+            testID={testID}
+            autoComplete="new-password"
           />
         )}
         name={name}

@@ -44,6 +44,8 @@ export default function LoginForm() {
         label="Address email"
         isPasswordHidden={false}
         errorMessage={errors.email?.message}
+        accessibilityLabel="emailInput"
+        testID="emailInput"
       />
       <InputField
         name="password"
@@ -55,11 +57,15 @@ export default function LoginForm() {
         isPasswordHidden={isPasswordHidden}
         toggleEye={toggleEye}
         errorMessage={errors.password?.message}
+        accessibilityLabel="passwordInput"
+        testID="passwordInput"
       />
       <Button
         text={isLoading ? "Loading..." : "Login"}
         onPress={handleSubmit(onSubmit)}
         variant="primary"
+        accessibilityLabel="loginButton"
+        testId="loginButton"
       />
       {error && <Text style={styles.error}>Error: {error}</Text>}
     </View>

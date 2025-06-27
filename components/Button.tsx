@@ -4,11 +4,23 @@ interface ButtonProps {
   text: string;
   onPress: () => void;
   variant: "primary" | "secondary";
+  accessibilityLabel: string;
+  testId: string;
 }
 
-export default function Button({ text, onPress, variant }: ButtonProps) {
+export default function Button({
+  text,
+  onPress,
+  variant,
+  accessibilityLabel,
+  testId,
+}: ButtonProps) {
   return (
-    <Pressable onPress={onPress} style={containerStyles[variant]}>
+    <Pressable
+      onPress={onPress}
+      style={containerStyles[variant]}
+      accessibilityLabel={accessibilityLabel}
+    >
       <Text style={textStyles[variant]}>{text}</Text>
     </Pressable>
   );
