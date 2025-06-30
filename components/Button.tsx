@@ -6,6 +6,7 @@ interface ButtonProps {
   variant: "primary" | "secondary";
   accessibilityLabel: string;
   // testID: string;
+  nativeID: string;
 }
 
 export default function Button({
@@ -21,6 +22,7 @@ export default function Button({
       style={containerStyles[variant]}
       accessibilityLabel={accessibilityLabel}
       // testID={testID}
+      nativeID={accessibilityLabel}
     >
       <Text style={textStyles[variant]}>{text}</Text>
     </Pressable>

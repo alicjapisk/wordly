@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { supabase } from "../../lib/supabase";
 import { useRouter } from "expo-router";
+import { supabase } from "@/lib/supabase";
 
 export function useLogin() {
   const [email, setEmail] = useState("");
