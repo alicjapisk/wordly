@@ -1,23 +1,29 @@
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Button from "../Button";
 import { useRouter } from "expo-router";
+import { Image } from "expo-image";
+import useIsWeb from "@/hooks/useIsWeb";
 
 export default function HomeScreen() {
   const router = useRouter();
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>
-        Welcome to the world of words! Learn new vocabulary and have fun.
-      </Text>
-      <View style={styles.buttonsContainer}>
-        <Button
-          text="Login"
-          onPress={() => router.navigate("/login")}
-          variant="primary"
-          accessibilityLabel="goToLoginButton"
-          nativeID="goToLoginButton"
+    <SafeAreaView style={styles.safeAreaViewContainer}>
+      <View style={styles.container}>
+        <Image
+          source={require("../../assets/images/fox.png")}
+          style={{ height: 300, width: 300 }}
         />
-        <Pressable>
+        <Text style={styles.title}>
+          Welcome to the world of words! Learn new vocabulary and have fun.
+        </Text>
+        <View style={styles.buttonsContainer}>
+          <Button
+            text="Login"
+            onPress={() => router.navigate("/login")}
+            variant="primary"
+            accessibilityLabel="goToLoginButton"
+            nativeID="goToLoginButton"
+          />
           <Button
             text="Register"
             onPress={() => router.navigate("/register")}
@@ -25,29 +31,37 @@ export default function HomeScreen() {
             accessibilityLabel="goToRegisterButton"
             nativeID="goToRegisterButton"
           />
-        </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
+const isWeb = useIsWeb();
 
 const styles = StyleSheet.create({
-  container: {
+  safeAreaViewContainer: {
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
-    backgroundColor: "#D99A25",
+    backgroundColor: "#FAFAFA",
+  },
+  container: {
+    width: isWeb ? "20%" : "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
-    color: "white",
+    color: "#FF7617",
+    paddingBottom: 10,
   },
+
   buttonsContainer: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 20,
+    width: "100%",
     paddingTop: 10,
+    paddingHorizontal: 10,
+    gap: 10,
   },
 });

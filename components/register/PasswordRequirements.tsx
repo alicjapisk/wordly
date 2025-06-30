@@ -1,5 +1,5 @@
 import Entypo from "@expo/vector-icons/Entypo";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 interface PasswordRequirementsProps {
   isCharValid: boolean;
@@ -12,16 +12,16 @@ const PasswordRequirements = ({
   isNumberValid,
 }: PasswordRequirementsProps) => {
   return (
-    <View className="flex flex-row items-center gap-[5px]">
-      <Text className={isCharValid ? "text-green" : "text-white"}>
+    <View style={style.container}>
+      <Text style={{ color: isCharValid ? "green" : "black" }}>
         Min. 8 characters
       </Text>
-      <Entypo name="dot-single" size={14} color="#F9F02D" />
-      <Text className={isBigLetterValid ? "text-green" : "text-white"}>
+      <Entypo name="dot-single" size={14} color="#FF7617" />
+      <Text style={{ color: isBigLetterValid ? "green" : "black" }}>
         One capital letter
       </Text>
-      <Entypo name="dot-single" size={14} color="#F9F02D" />
-      <Text className={isNumberValid ? "text-green" : "text-white"}>
+      <Entypo name="dot-single" size={14} color="#FF7617" />
+      <Text style={{ color: isNumberValid ? "green" : "black" }}>
         One digit
       </Text>
     </View>
@@ -29,3 +29,11 @@ const PasswordRequirements = ({
 };
 
 export default PasswordRequirements;
+
+const style = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
+  },
+});
