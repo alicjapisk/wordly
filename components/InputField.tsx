@@ -17,7 +17,7 @@ interface InputFieldProps {
   isPasswordHidden?: boolean;
   onKeyPress?: (e: any) => void;
   accessibilityLabel: string;
-  testID: string;
+  // testID: string;
 }
 
 function InputField({
@@ -31,7 +31,7 @@ function InputField({
   isPasswordHidden,
   errorMessage,
   accessibilityLabel,
-  testID,
+  // testID,
 }: InputFieldProps) {
   return (
     <View className="pb-[5px]">
@@ -61,7 +61,7 @@ function InputField({
               paddingHorizontal: 0,
             }}
             accessibilityLabel={accessibilityLabel}
-            testID={testID}
+            // testID={testID}
             autoComplete="new-password"
           />
         )}

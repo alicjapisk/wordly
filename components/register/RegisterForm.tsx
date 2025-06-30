@@ -61,7 +61,7 @@ const RegisterForm = () => {
             isPasswordHidden={false}
             errorMessage={errors.email?.message}
             accessibilityLabel="emailInput"
-            testID="emailInput"
+            // testID="emailInput"
           />
         </View>
         <View>
@@ -82,7 +82,7 @@ const RegisterForm = () => {
             toggleEye={toggleEye}
             errorMessage={errors.password?.message}
             accessibilityLabel="passwordInput"
-            testID="passwordInput"
+            // testID="passwordInput"
           />
         </View>
         <View className="pt-[5px]">
@@ -101,7 +101,7 @@ const RegisterForm = () => {
             toggleEye={toggleEye}
             errorMessage={errors.confirmPassword?.message}
             accessibilityLabel="confirmPasswordInput"
-            testID="confirmPasswordInput"
+            // testID="confirmPasswordInput"
           />
         </View>
         <View className="pl-[5px] pt-[15px]">
@@ -116,7 +116,7 @@ const RegisterForm = () => {
           onPress={handleSubmit(onSubmit)}
           variant="primary"
           accessibilityLabel="registerButton"
-          testId="registerButton"
+          // testID="registerButton"
         />
       </View>
       {isSuccess && (

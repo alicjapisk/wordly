@@ -15,7 +15,7 @@ export default function HomeScreen() {
           onPress={() => router.navigate("/login")}
           variant="primary"
           accessibilityLabel="goToLoginButton"
-          testId="goToLoginButton"
+          // testID="goToLoginButton"
         />
         <Pressable>
           <Button
@@ -23,7 +23,7 @@ export default function HomeScreen() {
             onPress={() => router.navigate("/register")}
             variant="secondary"
             accessibilityLabel="goToRegisterButton"
-            testId="goToRegisterButton"
+            // testID="goToRegisterButton"
           />
         </Pressable>
       </View>
