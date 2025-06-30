@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 
 import InputField from "../InputField";
 
@@ -9,6 +9,7 @@ import PasswordRequirements from "./PasswordRequirements";
 import useSignUp from "@/hooks/register/useSignUp";
 import Button from "../Button";
 import useShowPassword from "../useShowPassword";
+import useIsWeb from "@/hooks/useIsWeb";
 
 const RegisterForm = () => {
   const { handleSignUp, isSuccess, error } = useSignUp();
@@ -42,9 +43,10 @@ const RegisterForm = () => {
   const isNumberValid = useMemo(() => /\d/.test(password), [password]);
 
   return (
-    <>
-      <View>
-        <View>
+    <SafeAreaView style={styles.safeAreaViewContainer}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Register</Text>
+        <View style={styles.formContainer}>
           <InputField
             name="email"
             control={control}
@@ -63,8 +65,7 @@ const RegisterForm = () => {
             accessibilityLabel="emailInput"
             nativeID="emailInput"
           />
-        </View>
-        <View>
+
           <InputField
             name="password"
             control={control}
@@ -84,8 +85,7 @@ const RegisterForm = () => {
             accessibilityLabel="passwordInput"
             nativeID="passwordInput"
           />
-        </View>
-        <View className="pt-[5px]">
+
           <InputField
             name="confirmPassword"
             control={control}
@@ -103,14 +103,13 @@ const RegisterForm = () => {
             accessibilityLabel="confirmPasswordInput"
             nativeID="confirmPasswordInput"
           />
-        </View>
-        <View className="pl-[5px] pt-[15px]">
           <PasswordRequirements
             isCharValid={isCharValid}
             isBigLetterValid={isBigLetterValid}
             isNumberValid={isNumberValid}
           />
         </View>
+
         <Button
           text="Sign up"
           onPress={handleSubmit(onSubmit)}
@@ -123,20 +122,46 @@ const RegisterForm = () => {
         <Text style={styles.success}>Success! Please check your email.</Text>
       )}
       {error && <Text style={styles.error}>Error: {error}</Text>}
-    </>
+    </SafeAreaView>
   );
 };
 
 export default RegisterForm;
 
+const isWeb = useIsWeb();
 const styles = StyleSheet.create({
-  success: {
-    color: "green",
-    marginTop: 12,
-    fontWeight: "bold",
+  safeAreaViewContainer: {
+    alignItems: "center",
+    justifyContent: isWeb && "center",
+    flex: 1,
+    backgroundColor: "#FAFAFA",
+  },
+  container: {
+    width: isWeb ? "20%" : "100%",
+    borderWidth: isWeb && 2,
+    borderColor: isWeb && "#FF7617",
+    borderRadius: isWeb && 20,
+    padding: isWeb && 20,
+    paddingTop: 20,
+    paddingHorizontal: 10,
+  },
+  formContainer: {
+    gap: 20,
+    paddingBottom: 50,
   },
   error: {
     color: "red",
+    marginTop: 12,
+    fontWeight: "bold",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#FF7617",
+    paddingBottom: 10,
+  },
+  success: {
+    color: "green",
     marginTop: 12,
     fontWeight: "bold",
   },

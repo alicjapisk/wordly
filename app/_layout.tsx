@@ -62,9 +62,21 @@ function RootLayoutNav() {
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
           <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="register/index" />
-            <Stack.Screen name="login/index" />
+            <Stack.Screen
+              name="index"
+              options={{
+                headerShown: false,
+                title: "Home",
+              }}
+            />
+            <Stack.Screen
+              name="register/index"
+              options={{ title: "Register", headerTintColor: "black" }}
+            />
+            <Stack.Screen
+              name="login/index"
+              options={{ title: "Login", headerTintColor: "black" }}
+            />
             <Stack.Screen
               name="(tabs)"
               options={{ headerShown: false, gestureEnabled: false }}

@@ -1,12 +1,7 @@
 import RegisterForm from "@/components/register/RegisterForm";
-import { SafeAreaView, StyleSheet } from "react-native";
 
 const Register = () => {
-  return (
-    <SafeAreaView>
-      <RegisterForm />
-    </SafeAreaView>
-  );
+  return <RegisterForm />;
 };
 
 export default Register;
