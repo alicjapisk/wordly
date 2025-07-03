@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import InputField from "../InputField";
 
-import useShowPassword from "../useShowPassword";
+import useShowPassword from "../../hooks/useShowPassword";
 import Button from "../Button";
 import { useLogin } from "@/hooks/login/useLogin";
 import useIsWeb from "@/hooks/useIsWeb";
+import Modal from "../Modal";
+import ForgotPasswordContent from "./ForgotPasswordContent";
 
 export default function LoginForm() {
   const { error, isLoading, handleLogin } = useLogin();
   const { toggleEye, isPasswordHidden } = useShowPassword();
+  const [modalVisible, setModalVisible] = useState(false);
   const {
     control,
     handleSubmit,
@@ -65,6 +68,15 @@ export default function LoginForm() {
             nativeID="passwordInput"
           />
         </View>
+        <View style={styles.modalView}>
+          <Pressable
+            onPress={() => setModalVisible(true)}
+            nativeID="openResetPasswordModalButton"
+            accessibilityLabel="openResetPasswordModalButton"
+          >
+            <Text>Forgot password?</Text>
+          </Pressable>
+        </View>
         <Button
           text={isLoading ? "Loading..." : "Login"}
           onPress={handleSubmit(onSubmit)}
@@ -74,6 +86,12 @@ export default function LoginForm() {
         />
         {error && <Text style={styles.error}>Error: {error}</Text>}
       </View>
+      <Modal
+        title="Forgot password"
+        content={<ForgotPasswordContent />}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </SafeAreaView>
   );
 }
@@ -96,7 +114,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     gap: 20,
-    paddingBottom: 50,
+    paddingBottom: 10,
   },
   error: {
     color: "red",
@@ -108,5 +126,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FF7617",
     paddingBottom: 10,
+  },
+  modalView: {
+    paddingBottom: 20,
+    alignItems: "flex-end",
   },
 });

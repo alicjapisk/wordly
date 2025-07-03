@@ -8,7 +8,7 @@ import { PASSWORD_REGEXP } from "@/constants";
 import PasswordRequirements from "./PasswordRequirements";
 import useSignUp from "@/hooks/register/useSignUp";
 import Button from "../Button";
-import useShowPassword from "../useShowPassword";
+import useShowPassword from "../../hooks/useShowPassword";
 import useIsWeb from "@/hooks/useIsWeb";
 
 const RegisterForm = () => {

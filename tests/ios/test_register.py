@@ -8,7 +8,8 @@ def test_register():
 	options = XCUITestOptions()
 	options.set_capability("platformVersion", "17.5")
 	options.set_capability("deviceName", "iPhone 15")
-	options.set_capability("app", "ios/build/Build/Products/Debug-iphonesimulator/wordly.app")
+	options.set_capability("bundleId", "com.anonymous.wordly")
+	options.set_capability("noReset", True)
 
 	driver = webdriver.Remote("http://localhost:4723", options=options)
 
