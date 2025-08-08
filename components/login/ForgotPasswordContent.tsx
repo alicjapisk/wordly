@@ -1,7 +1,7 @@
 import useResetPassword from "@/hooks/login/useResetPassword";
 import { useForm } from "react-hook-form";
 import { StyleSheet, Text, View } from "react-native";
-import InputField from "../InputField";
+import InputField from "../form/InputField";
 import Button from "../Button";
 
 export default function ForgotPasswordContent() {

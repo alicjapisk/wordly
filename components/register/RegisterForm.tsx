@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 
-import InputField from "../InputField";
+import InputField from "../form/InputField";
 
 import { PASSWORD_REGEXP } from "@/constants";
 import PasswordRequirements from "./PasswordRequirements";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-import InputField from "../InputField";
+import InputField from "../form/InputField";
 
 import useShowPassword from "../../hooks/useShowPassword";
 import Button from "../Button";
