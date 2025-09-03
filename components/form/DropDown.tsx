@@ -53,7 +53,9 @@ function DropDown({
               value={value}
               items={items}
               setOpen={setOpen}
-              setValue={onChange}
+              setValue={(val) =>
+                onChange(typeof val === "function" ? val(value) : val)
+              }
               setItems={setItems}
               searchable={searchable}
               placeholder={placeholder}

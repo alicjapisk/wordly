@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
-import CreateCourseForm from "@/components/courses/CreateCourseForm";
+import CreateSetForm from "@/components/sets/CreateSetForm";
 
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create new course</Text>
+      <Text style={styles.title}>Create new set</Text>
       <View style={styles.formContainer}>
-        <CreateCourseForm />
+        <CreateSetForm />
       </View>
     </View>
   );

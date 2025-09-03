@@ -1,13 +1,13 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import InputField from "../form/InputField";
 import { useForm } from "react-hook-form";
-import DropDownPicker from "react-native-dropdown-picker";
 import { useState } from "react";
 import DropDown from "../form/DropDown";
 import languages from "../../assets/files/languages.json";
 import Button from "../Button";
-import { useRoute } from "@react-navigation/native";
 import { useRouter } from "expo-router";
+import useCreateNewCourse from "@/hooks/courses/useCreateNewCourse";
+
 function CreateCourseForm() {
   const {
     control,
@@ -15,13 +15,14 @@ function CreateCourseForm() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      courseName: "",
+      title: "",
       courseLang: "",
       baseLang: "",
       description: "",
     },
     mode: "onSubmit",
   });
+  const { createCourse, isSuccess, error } = useCreateNewCourse();
   const route = useRouter();
   const [openCourseLang, setOpenCourseLang] = useState(false);
 
@@ -35,20 +36,30 @@ function CreateCourseForm() {
   );
 
   const onSubmit = async (data: any) => {
-    route.navigate("/(tabs)/(create-course)/create-card");
+    await createCourse(
+      data.title,
+      data.courseLang,
+      data.baseLang,
+      data.description
+    );
+    if (isSuccess) {
+      setTimeout(() => {
+        route.navigate("/(tabs)/(courses)/user-courses");
+      }, 1000);
+    }
   };
 
   return (
     <View style={styles.formContainer}>
       <InputField
-        name="courseName"
+        name="title"
         label="Course name"
         placeholder="Your course name"
         control={control}
         rules={{ required: "Field required" }}
         errors={errors}
-        accessibilityLabel="courseName"
-        nativeID="courseName"
+        accessibilityLabel="title"
+        nativeID="title"
       />
       <DropDown
         open={openCourseLang}
@@ -97,6 +108,11 @@ function CreateCourseForm() {
         accessibilityLabel="createCourseButton"
         nativeID="createCourseButton"
       />
+      {isSuccess && (
+        <View style={styles.successContainer}>
+          <Text style={styles.success}>Course has been created!</Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -109,5 +125,17 @@ const styles = StyleSheet.create({
   },
   baseLangContainer: {
     zIndex: 10,
+  },
+  success: {
+    color: "black",
+    fontSize: 13,
+  },
+  successContainer: {
+    marginTop: 4,
+    backgroundColor: "#cef2db",
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
   },
 });

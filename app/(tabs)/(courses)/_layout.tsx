@@ -8,7 +8,8 @@ export default function AppLayout() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="create-course/index" />
+      <Stack.Screen name="course-screen/[course_id]" />
+      <Stack.Screen name="user-courses/index" />
     </Stack>
   );
 }
