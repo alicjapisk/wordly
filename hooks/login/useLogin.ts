@@ -23,7 +23,7 @@ export function useLogin() {
 
       if (error) throw error;
       else {
-        router.navigate("/(tabs)");
+        router.navigate("/(tabs)/user-courses");
       }
       setSuccess(true);
     } catch (error: any) {
