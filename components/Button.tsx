@@ -31,13 +31,13 @@ const containerStyles = StyleSheet.create({
   primary: {
     backgroundColor: "#FF7617",
     padding: 12,
-    borderRadius: 20,
+    borderRadius: 10,
     width: "100%",
   },
   secondary: {
     backgroundColor: "#FAFAFA",
     padding: 12,
-    borderRadius: 20,
+    borderRadius: 10,
     borderColor: "#FF7617",
     borderWidth: 2,
     width: "100%",
